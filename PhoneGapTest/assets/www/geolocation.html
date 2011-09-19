@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+	<link rel="stylesheet" href="jquery/jquery.mobile.css" />
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="jquery/jquery.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile.js"></script>
+	<script type="text/javascript" src="jquery/jquery.fn.gmap.min.js"></script>
+	<script type="text/javascript">
+	 	$('#map_canvas').gmap().bind('init', function(ev, map) {
+	        $('#map_canvas').gmap('addMarker', { 'position': '57.7973333,12.0502107', 'bounds': true }).click(function() {
+	            $('#map_canvas').gmap('openInfoWindow', { 'content': 'Hello World!' }, this);
+	        });
+	    });
+	 	$('#geolocation').live("pagecreate", function() {
+			$('#map_canvas_2').gmap('refresh');
+		});
+	</script>
+</head>
+<body>
+
+	<div data-role="page" id="geolocation" data-title="Geo-Location with Maps">
+		<div data-role="header">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="geolocation.html" data-icon="search" class="ui-btn-active">Geo-Location with Maps</a></li>
+					<li><a href="settings.html" data-icon="gear">Settings</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div data-role="content">
+			<p>Map</p>
+			<div id="map_canvas" style="width:100%; height:100%"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
